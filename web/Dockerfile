@@ -9,6 +9,6 @@ RUN pip install -r requirements.txt
 # Copy the application code into the container
 COPY . .
 # Expose Flask’s default port
-EXPOSE 5000
+EXPOSE 3500
 # Start the Flask development server
-CMD ["python", "main.py", "--port", "5000"]
+CMD ["python", "main.py", "--port", "3500"]

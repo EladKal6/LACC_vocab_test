@@ -5,7 +5,7 @@ app = create_app()
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Run the Flask server.')
-    parser.add_argument('--port', type=int, default=5000)
+    parser.add_argument('--port', type=int, default=3500)
     args = parser.parse_args()
 
     # Debug mode: the server will restart automatically when code changes

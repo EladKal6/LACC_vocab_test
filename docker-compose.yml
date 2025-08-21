@@ -4,8 +4,8 @@ services:
       context: ./web
     hostname: web
     container_name: web
-    ports: # Map host port 5000 to container port 5000
-      - "5000:5000"
+    ports: # Map host port 3500 to container port 3500
+      - "3500:3500"
     volumes: # Mount code into container for live updates
       - ./web:/app
     networks: # Join a shared network so services can communicate
@@ -21,7 +21,7 @@ services:
     restart: unless-stopped
     command: [ "--bind_ip_all" ] # Allow connections from any IP
     expose: # Expose default Mongo port
-      - "27017:27017"
+      - "27018:27018"
     volumes: # Persist database files on the host
       - ./data/db:/data/db
     networks:
@@ -32,8 +32,8 @@ services:
     hostname: mongo-express
     container_name: mongo-express
     restart: unless-stopped
-    ports:  # Map host port 8081 to the admin UI port
-      - "8081:8081"
+    ports:  # Map host port 8083 to the admin UI port
+      - "8083:8083"
     environment: # Tell mongo-express where to find the database
       - ME_CONFIG_MONGODB_SERVER=db
       - ME_CONFIG_MONGODB_URL=mongodb://db

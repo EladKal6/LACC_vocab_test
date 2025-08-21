@@ -14,7 +14,7 @@ def create_app():
     app.register_blueprint(views, url_prefix='/')
 
     app.quiz_answers = UserAnswerLog(
-        mongo_uri="mongodb://db:27017/db",
+        mongo_uri="mongodb://db:27018/db",
         db_name='quiz_app',
         collection_name='user_answers'
     )
