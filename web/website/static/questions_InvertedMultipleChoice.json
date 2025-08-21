@@ -1,0 +1,202 @@
+{
+  "instructions": "In this test, you will be presented with a series of definitions. For each definition, your task is to select the English word that best matches it from the list of options provided. Read each definition carefully and choose the word that fits best. Take your time and do your best. If everything is clear, you can now start the experiment.",
+  "question_display": "word_only",
+  "questions": [
+    {
+      "id": "To separate into parts",
+      "type": "choice",
+      "feedback": true,
+      "choices": [
+        "sausage",
+        "stack",
+        "retire",
+        "divide"
+      ],
+      "target": [
+        "divide"
+      ]
+    },
+    {
+      "id": "A retail establishment that sells medicines toiletries and other household goods",
+      "type": "choice",
+      "feedback": true,
+      "choices": [
+        "roughly",
+        "childhood",
+        "drugstore",
+        "toothbrush"
+      ],
+      "target": [
+        "drugstore"
+      ]
+    },
+    {
+      "id": "A representation of something often on a smaller scale",
+      "type": "choice",
+      "feedback": true,
+      "choices": [
+        "task",
+        "sports",
+        "unless",
+        "model"
+      ],
+      "target": [
+        "model"
+      ]
+    },
+    {
+      "id": "The art or practice of designing and constructing buildings",
+      "type": "choice",
+      "feedback": true,
+      "choices": [
+        "market",
+        "audience",
+        "architecture",
+        "reply"
+      ],
+      "target": [
+        "architecture"
+      ]
+    },
+    {
+      "id": "Given",
+      "type": "choice",
+      "feedback": true,
+      "choices": [
+        "sign",
+        "helpful",
+        "retail",
+        "provided"
+      ],
+      "target": [
+        "provided"
+      ]
+    },
+    {
+      "id": "A three-dimensional work of art typically representing a person or animal",
+      "type": "choice",
+      "feedback": true,
+      "choices": [
+        "hardly",
+        "accept",
+        "quiz",
+        "statue"
+      ],
+      "target": [
+        "statue"
+      ]
+    },
+    {
+      "id": "The difference between two things",
+      "type": "choice",
+      "feedback": true,
+      "choices": [
+        "release",
+        "predict",
+        "contrast",
+        "anywhere"
+      ],
+      "target": [
+        "contrast"
+      ]
+    },
+    {
+      "id": "A celestial body that orbits a star is massive enough to be rounded by its own gravity and has cleared the neighborhood around its orbit",
+      "type": "choice",
+      "feedback": true,
+      "choices": [
+        "appear",
+        "ahead",
+        "planet",
+        "pilot"
+      ],
+      "target": [
+        "planet"
+      ]
+    },
+    {
+      "id": "Be deprived of or cease to have",
+      "type": "choice",
+      "feedback": true,
+      "choices": [
+        "lose",
+        "place",
+        "crown",
+        "crime"
+      ],
+      "target": [
+        "lose"
+      ]
+    },
+    {
+      "id": "To stop doing something",
+      "type": "choice",
+      "feedback": true,
+      "choices": [
+        "honey",
+        "length",
+        "quit",
+        "mushroom"
+      ],
+      "target": [
+        "quit"
+      ]
+    },
+    {
+      "id": "A polite word used to make a request more courteous",
+      "type": "choice",
+      "feedback": true,
+      "choices": [
+        "stomachache",
+        "softly",
+        "homework",
+        "please"
+      ],
+      "target": [
+        "please"
+      ]
+    },
+    {
+      "id": "Taking part in or connected with something",
+      "type": "choice",
+      "feedback": true,
+      "choices": [
+        "customer",
+        "release",
+        "income",
+        "involved"
+      ],
+      "target": [
+        "involved"
+      ]
+    },
+    {
+      "id": "A finely ground powder made from grains",
+      "type": "choice",
+      "feedback": true,
+      "choices": [
+        "cheek",
+        "badly",
+        "flour",
+        "feelings"
+      ],
+      "target": [
+        "flour"
+      ]
+    },
+    {
+      "id": "At an unspecified time in the future",
+      "type": "choice",
+      "feedback": true,
+      "choices": [
+        "speak",
+        "slender",
+        "painter",
+        "someday"
+      ],
+      "target": [
+        "someday"
+      ]
+    }
+  ]
+}

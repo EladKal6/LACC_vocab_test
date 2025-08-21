@@ -1,0 +1,762 @@
+{
+  "instructions": "In this test, you will be presented with a series of words. Your task is to decide whether this is an existing English word or not. If you think it is an existing English word, you click on 'yes', and if you think it is not an existing English word, you click on 'no'. If you are sure that the word exists, even though you don t know its exact meaning, you may still respond 'yes'. But if you are not sure if it is an existing word, you should respond 'no'. In this experiment, we use British English rather than American English spelling. For example: 'realise' instead of 'realize'; 'colour' instead of 'color', and so on. Please don t let this confuse you. This experiment is not about detecting such subtle spelling differences anyway. You have as much time as you like for each decision. This part of the experiment will take about 5 minutes. If everything is clear, you can now start the experiment.",
+  "question_display": "word_only",
+  "questions": [
+    {
+      "id": "platery",
+      "type": "choice",
+      "feedback": true,
+      "choices": [
+        "No",
+        "Yes"
+      ],
+      "target": [
+        "No"
+      ]
+    },
+    {
+      "id": "denial",
+      "type": "choice",
+      "feedback": true,
+      "choices": [
+        "No",
+        "Yes"
+      ],
+      "target": [
+        "Yes"
+      ]
+    },
+    {
+      "id": "generic",
+      "type": "choice",
+      "feedback": true,
+      "choices": [
+        "No",
+        "Yes"
+      ],
+      "target": [
+        "Yes"
+      ]
+    },
+    {
+      "id": "mensible",
+      "type": "choice",
+      "feedback": true,
+      "choices": [
+        "No",
+        "Yes"
+      ],
+      "target": [
+        "No"
+      ]
+    },
+    {
+      "id": "scornful",
+      "type": "choice",
+      "feedback": true,
+      "choices": [
+        "No",
+        "Yes"
+      ],
+      "target": [
+        "Yes"
+      ]
+    },
+    {
+      "id": "stoutly",
+      "type": "choice",
+      "feedback": true,
+      "choices": [
+        "No",
+        "Yes"
+      ],
+      "target": [
+        "Yes"
+      ]
+    },
+    {
+      "id": "ablaze",
+      "type": "choice",
+      "feedback": true,
+      "choices": [
+        "No",
+        "Yes"
+      ],
+      "target": [
+        "Yes"
+      ]
+    },
+    {
+      "id": "kermshaw",
+      "type": "choice",
+      "feedback": true,
+      "choices": [
+        "No",
+        "Yes"
+      ],
+      "target": [
+        "No"
+      ]
+    },
+    {
+      "id": "moonlit",
+      "type": "choice",
+      "feedback": true,
+      "choices": [
+        "No",
+        "Yes"
+      ],
+      "target": [
+        "Yes"
+      ]
+    },
+    {
+      "id": "lofty",
+      "type": "choice",
+      "feedback": true,
+      "choices": [
+        "No",
+        "Yes"
+      ],
+      "target": [
+        "Yes"
+      ]
+    },
+    {
+      "id": "hurricane",
+      "type": "choice",
+      "feedback": true,
+      "choices": [
+        "No",
+        "Yes"
+      ],
+      "target": [
+        "Yes"
+      ]
+    },
+    {
+      "id": "flaw",
+      "type": "choice",
+      "feedback": true,
+      "choices": [
+        "No",
+        "Yes"
+      ],
+      "target": [
+        "Yes"
+      ]
+    },
+    {
+      "id": "alberation",
+      "type": "choice",
+      "feedback": true,
+      "choices": [
+        "No",
+        "Yes"
+      ],
+      "target": [
+        "No"
+      ]
+    },
+    {
+      "id": "unkempt",
+      "type": "choice",
+      "feedback": true,
+      "choices": [
+        "No",
+        "Yes"
+      ],
+      "target": [
+        "Yes"
+      ]
+    },
+    {
+      "id": "breeding",
+      "type": "choice",
+      "feedback": true,
+      "choices": [
+        "No",
+        "Yes"
+      ],
+      "target": [
+        "Yes"
+      ]
+    },
+    {
+      "id": "festivity",
+      "type": "choice",
+      "feedback": true,
+      "choices": [
+        "No",
+        "Yes"
+      ],
+      "target": [
+        "Yes"
+      ]
+    },
+    {
+      "id": "screech",
+      "type": "choice",
+      "feedback": true,
+      "choices": [
+        "No",
+        "Yes"
+      ],
+      "target": [
+        "Yes"
+      ]
+    },
+    {
+      "id": "savoury",
+      "type": "choice",
+      "feedback": true,
+      "choices": [
+        "No",
+        "Yes"
+      ],
+      "target": [
+        "Yes"
+      ]
+    },
+    {
+      "id": "plaudate",
+      "type": "choice",
+      "feedback": true,
+      "choices": [
+        "No",
+        "Yes"
+      ],
+      "target": [
+        "No"
+      ]
+    },
+    {
+      "id": "shin",
+      "type": "choice",
+      "feedback": true,
+      "choices": [
+        "No",
+        "Yes"
+      ],
+      "target": [
+        "Yes"
+      ]
+    },
+    {
+      "id": "fluid",
+      "type": "choice",
+      "feedback": true,
+      "choices": [
+        "No",
+        "Yes"
+      ],
+      "target": [
+        "Yes"
+      ]
+    },
+    {
+      "id": "spaunch",
+      "type": "choice",
+      "feedback": true,
+      "choices": [
+        "No",
+        "Yes"
+      ],
+      "target": [
+        "No"
+      ]
+    },
+    {
+      "id": "allied",
+      "type": "choice",
+      "feedback": true,
+      "choices": [
+        "No",
+        "Yes"
+      ],
+      "target": [
+        "Yes"
+      ]
+    },
+    {
+      "id": "slain",
+      "type": "choice",
+      "feedback": true,
+      "choices": [
+        "No",
+        "Yes"
+      ],
+      "target": [
+        "Yes"
+      ]
+    },
+    {
+      "id": "recipient",
+      "type": "choice",
+      "feedback": true,
+      "choices": [
+        "No",
+        "Yes"
+      ],
+      "target": [
+        "Yes"
+      ]
+    },
+    {
+      "id": "exprate",
+      "type": "choice",
+      "feedback": true,
+      "choices": [
+        "No",
+        "Yes"
+      ],
+      "target": [
+        "No"
+      ]
+    },
+    {
+      "id": "eloquence",
+      "type": "choice",
+      "feedback": true,
+      "choices": [
+        "No",
+        "Yes"
+      ],
+      "target": [
+        "Yes"
+      ]
+    },
+    {
+      "id": "cleanliness",
+      "type": "choice",
+      "feedback": true,
+      "choices": [
+        "No",
+        "Yes"
+      ],
+      "target": [
+        "Yes"
+      ]
+    },
+    {
+      "id": "dispatch",
+      "type": "choice",
+      "feedback": true,
+      "choices": [
+        "No",
+        "Yes"
+      ],
+      "target": [
+        "Yes"
+      ]
+    },
+    {
+      "id": "rebondicate",
+      "type": "choice",
+      "feedback": true,
+      "choices": [
+        "No",
+        "Yes"
+      ],
+      "target": [
+        "No"
+      ]
+    },
+    {
+      "id": "ingenious",
+      "type": "choice",
+      "feedback": true,
+      "choices": [
+        "No",
+        "Yes"
+      ],
+      "target": [
+        "Yes"
+      ]
+    },
+    {
+      "id": "bewitch",
+      "type": "choice",
+      "feedback": true,
+      "choices": [
+        "No",
+        "Yes"
+      ],
+      "target": [
+        "Yes"
+      ]
+    },
+    {
+      "id": "skave",
+      "type": "choice",
+      "feedback": true,
+      "choices": [
+        "No",
+        "Yes"
+      ],
+      "target": [
+        "No"
+      ]
+    },
+    {
+      "id": "plaintively",
+      "type": "choice",
+      "feedback": true,
+      "choices": [
+        "No",
+        "Yes"
+      ],
+      "target": [
+        "Yes"
+      ]
+    },
+    {
+      "id": "kilp",
+      "type": "choice",
+      "feedback": true,
+      "choices": [
+        "No",
+        "Yes"
+      ],
+      "target": [
+        "No"
+      ]
+    },
+    {
+      "id": "interfate",
+      "type": "choice",
+      "feedback": true,
+      "choices": [
+        "No",
+        "Yes"
+      ],
+      "target": [
+        "No"
+      ]
+    },
+    {
+      "id": "hasty",
+      "type": "choice",
+      "feedback": true,
+      "choices": [
+        "No",
+        "Yes"
+      ],
+      "target": [
+        "Yes"
+      ]
+    },
+    {
+      "id": "lengthy",
+      "type": "choice",
+      "feedback": true,
+      "choices": [
+        "No",
+        "Yes"
+      ],
+      "target": [
+        "Yes"
+      ]
+    },
+    {
+      "id": "fray",
+      "type": "choice",
+      "feedback": true,
+      "choices": [
+        "No",
+        "Yes"
+      ],
+      "target": [
+        "Yes"
+      ]
+    },
+    {
+      "id": "crumper",
+      "type": "choice",
+      "feedback": true,
+      "choices": [
+        "No",
+        "Yes"
+      ],
+      "target": [
+        "No"
+      ]
+    },
+    {
+      "id": "upkeep",
+      "type": "choice",
+      "feedback": true,
+      "choices": [
+        "No",
+        "Yes"
+      ],
+      "target": [
+        "Yes"
+      ]
+    },
+    {
+      "id": "majestic",
+      "type": "choice",
+      "feedback": true,
+      "choices": [
+        "No",
+        "Yes"
+      ],
+      "target": [
+        "Yes"
+      ]
+    },
+    {
+      "id": "magrity",
+      "type": "choice",
+      "feedback": true,
+      "choices": [
+        "No",
+        "Yes"
+      ],
+      "target": [
+        "No"
+      ]
+    },
+    {
+      "id": "nourishment",
+      "type": "choice",
+      "feedback": true,
+      "choices": [
+        "No",
+        "Yes"
+      ],
+      "target": [
+        "Yes"
+      ]
+    },
+    {
+      "id": "abergy",
+      "type": "choice",
+      "feedback": true,
+      "choices": [
+        "No",
+        "Yes"
+      ],
+      "target": [
+        "No"
+      ]
+    },
+    {
+      "id": "proom",
+      "type": "choice",
+      "feedback": true,
+      "choices": [
+        "No",
+        "Yes"
+      ],
+      "target": [
+        "No"
+      ]
+    },
+    {
+      "id": "turmoil",
+      "type": "choice",
+      "feedback": true,
+      "choices": [
+        "No",
+        "Yes"
+      ],
+      "target": [
+        "Yes"
+      ]
+    },
+    {
+      "id": "carbohydrate",
+      "type": "choice",
+      "feedback": true,
+      "choices": [
+        "No",
+        "Yes"
+      ],
+      "target": [
+        "Yes"
+      ]
+    },
+    {
+      "id": "scholar",
+      "type": "choice",
+      "feedback": true,
+      "choices": [
+        "No",
+        "Yes"
+      ],
+      "target": [
+        "Yes"
+      ]
+    },
+    {
+      "id": "turtle",
+      "type": "choice",
+      "feedback": true,
+      "choices": [
+        "No",
+        "Yes"
+      ],
+      "target": [
+        "Yes"
+      ]
+    },
+    {
+      "id": "fellick",
+      "type": "choice",
+      "feedback": true,
+      "choices": [
+        "No",
+        "Yes"
+      ],
+      "target": [
+        "No"
+      ]
+    },
+    {
+      "id": "destription",
+      "type": "choice",
+      "feedback": true,
+      "choices": [
+        "No",
+        "Yes"
+      ],
+      "target": [
+        "No"
+      ]
+    },
+    {
+      "id": "cylinder",
+      "type": "choice",
+      "feedback": true,
+      "choices": [
+        "No",
+        "Yes"
+      ],
+      "target": [
+        "Yes"
+      ]
+    },
+    {
+      "id": "censorship",
+      "type": "choice",
+      "feedback": true,
+      "choices": [
+        "No",
+        "Yes"
+      ],
+      "target": [
+        "Yes"
+      ]
+    },
+    {
+      "id": "celestial",
+      "type": "choice",
+      "feedback": true,
+      "choices": [
+        "No",
+        "Yes"
+      ],
+      "target": [
+        "Yes"
+      ]
+    },
+    {
+      "id": "rascal",
+      "type": "choice",
+      "feedback": true,
+      "choices": [
+        "No",
+        "Yes"
+      ],
+      "target": [
+        "Yes"
+      ]
+    },
+    {
+      "id": "purrage",
+      "type": "choice",
+      "feedback": true,
+      "choices": [
+        "No",
+        "Yes"
+      ],
+      "target": [
+        "No"
+      ]
+    },
+    {
+      "id": "pulsh",
+      "type": "choice",
+      "feedback": true,
+      "choices": [
+        "No",
+        "Yes"
+      ],
+      "target": [
+        "No"
+      ]
+    },
+    {
+      "id": "muddy",
+      "type": "choice",
+      "feedback": true,
+      "choices": [
+        "No",
+        "Yes"
+      ],
+      "target": [
+        "Yes"
+      ]
+    },
+    {
+      "id": "quirty",
+      "type": "choice",
+      "feedback": true,
+      "choices": [
+        "No",
+        "Yes"
+      ],
+      "target": [
+        "No"
+      ]
+    },
+    {
+      "id": "pudour",
+      "type": "choice",
+      "feedback": true,
+      "choices": [
+        "No",
+        "Yes"
+      ],
+      "target": [
+        "No"
+      ]
+    },
+    {
+      "id": "listless",
+      "type": "choice",
+      "feedback": true,
+      "choices": [
+        "No",
+        "Yes"
+      ],
+      "target": [
+        "Yes"
+      ]
+    },
+    {
+      "id": "wrought",
+      "type": "choice",
+      "feedback": true,
+      "choices": [
+        "No",
+        "Yes"
+      ],
+      "target": [
+        "Yes"
+      ]
+    }
+  ]
+}

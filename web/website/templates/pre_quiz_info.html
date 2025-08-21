@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Participant Information</title>
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Roboto', sans-serif;
+      background: linear-gradient(135deg, #4a90e2, #9013fe);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      color: #fff;
+      text-align: center;
+    }
+    .form-card {
+      max-width: 500px;
+      padding: 32px 24px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    }
+    .form-card h1 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+    .form-group {
+      margin-bottom: 1.2em;
+      text-align: left;
+    }
+    label {
+      display: block;
+      margin-bottom: 0.3em;
+      color: #ffe58f;
+      font-weight: 500;
+    }
+    input, select, textarea {
+      width: 100%;
+      padding: 8px 10px;
+      border-radius: 6px;
+      border: none;
+      font-size: 1rem;
+      margin-bottom: 0.2em;
+    }
+    .btn {
+      background: #fff;
+      color: #4a90e2;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 500;
+      text-decoration: none;
+      transition: background 0.2s ease;
+      margin: 0.5em 0;
+      display: inline-block;
+      cursor: pointer;
+    }
+    .btn:hover {
+      background: #f0f0f0;
+    }
+  </style>
+</head>
+<body>
+  <form class="form-card" method="post" action="{{ url_for('views.pre_quiz_info') }}">
+    <h1>Participant Information</h1>
+    <div class="form-group">
+      <label for="name">Name (optional):</label>
+      <input type="text" id="name" name="name">
+    </div>
+    <div class="form-group">
+      <label for="age">Age:</label>
+      <input type="number" id="age" name="age" min="5" max="120" required>
+    </div>
+    <div class="form-group">
+      <label for="country">Country:</label>
+      <input type="text" id="country" name="country" required>
+    </div>
+    <div class="form-group">
+      <label for="native_language">Native Language:</label>
+      <input type="text" id="native_language" name="native_language" required>
+    </div>
+    <div class="form-group">
+      <label for="other_languages">Other Languages Spoken (comma separated):</label>
+      <input type="text" id="other_languages" name="other_languages">
+    </div>
+    <div class="form-group">
+      <label for="english_level">Self-Reported English Level:</label>
+      <select id="english_level" name="english_level" required>
+        <option value="">Select...</option>
+        <option value="Beginner">Beginner</option>
+        <option value="Intermediate">Intermediate</option>
+        <option value="Advanced">Advanced</option>
+        <option value="Native/Fluent">Native/Fluent</option>
+      </select>
+    </div>
+    <button type="submit" class="btn">Continue to Quiz</button>
+  </form>
+</body>
+</html> 

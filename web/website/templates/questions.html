@@ -1,0 +1,410 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Interactive Quiz</title>
+  <!-- Professional Font -->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Roboto', sans-serif;
+      background: #eef2f5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+    .instructions {
+      background: #fffbe6;
+      color: #333;
+      border: 1px solid #ffe58f;
+      border-radius: 8px;
+      padding: 16px 24px;
+      margin-bottom: 24px;
+      font-size: 1.1rem;
+      max-width: 640px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .quiz-card {
+      background: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      width: 100%;
+      max-width: 640px;
+      transition: transform 0.3s ease;
+    }
+    .quiz-card:hover { transform: translateY(-4px); }
+    .card-header {
+      background: linear-gradient(135deg, #4a90e2, #9013fe);
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+    }
+    .card-header h1 { margin: 0; font-weight: 500; }
+    .card-body {
+      padding: 30px;
+    }
+    .question {
+      font-size: 1.25rem;
+      margin-bottom: 1.5rem;
+      color: #333;
+    }
+    .options {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 2rem 0;
+    }
+    .options li {
+      margin-bottom: 1rem;
+    }
+    .options label {
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      padding: 12px 16px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      transition: background 0.2s ease, border-color 0.2s ease;
+    }
+    .options input {
+      margin-right: 12px;
+      accent-color: #4a90e2;
+    }
+    .options label:hover {
+      background: #f4f7fa;
+      border-color: #4a90e2;
+    }
+    .btn {
+      display: inline-block;
+      background: #4a90e2;
+      color: #fff;
+      text-decoration: none;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.2s ease;
+    }
+    .btn:disabled {
+      background: #a0c4f2;
+      cursor: not-allowed;
+    }
+    .btn:hover:not(:disabled) {
+      background: #3b78c2;
+    }
+    #flash {
+      margin-top: 1rem;
+      padding: 12px 16px;
+      border-radius: 6px;
+      display: none;
+      font-weight: 500;
+      font-size: 0.95rem;
+    }
+    #score-screen {
+      text-align: center;
+      padding: 40px 20px;
+    }
+    #score-screen h2 {
+      margin-bottom: 1rem;
+      font-weight: 500;
+    }
+    #score-screen p {
+      font-size: 1.5rem;
+      color: #4a90e2;
+      margin-bottom: 2rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="instructions" id="instructions">
+    {{ instructions }}
+  </div>
+  <div class="quiz-card" id="quiz-card">
+    <div class="card-header">
+      <h1>{% if quiz_title %}{{ quiz_title }}{% else %}Word Definition Quiz{% endif %}</h1>
+      {% if quizzes_left is defined %}
+        <div style="font-size:1rem; color:#ffe58f; margin-top:8px;">Quizzes left: {{ quizzes_left }}</div>
+      {% endif %}
+    </div>
+    <div class="card-body" id="card-body"></div>
+  </div>
+  <script>
+    let questions = {{ questions|tojson }};
+    const quizId = {{ quiz_id|tojson }};
+    const questionDisplay = {{ question_display|tojson }};
+    const easyQuestionFromServer = {{ easy_question|tojson }};
+    let currentIndex = 0;
+    let score = 0;
+    const questionResults = [];
+    let questionStartTimeMs = 0;
+
+    // Tracking variables for each question
+    let mouseMoves = [];
+    let lastMouseRecordMs = 0;
+    let switchedTabsThisQuestion = false;
+    let tabHiddenStartMs = null;
+    let tabAwayMs = 0;
+    const MAX_MOUSE_SAMPLES = 300; // cap for samples per question
+
+    function nowMs() {
+      return (window.performance && performance.now) ? performance.now() : Date.now();
+    }
+
+    function round2(n) {
+      return Math.round(n * 100) / 100;
+    }
+
+    // Ramer–Douglas–Peucker simplification to preserve general movement
+    function perpendicularDistance(p, v, w) {
+      const vx = w.x - v.x;
+      const vy = w.y - v.y;
+      if (vx === 0 && vy === 0) {
+        const dx = p.x - v.x;
+        const dy = p.y - v.y;
+        return Math.sqrt(dx * dx + dy * dy);
+      }
+      const t = ((p.x - v.x) * vx + (p.y - v.y) * vy) / (vx * vx + vy * vy);
+      const tClamped = Math.max(0, Math.min(1, t));
+      const projx = v.x + tClamped * vx;
+      const projy = v.y + tClamped * vy;
+      const dx = p.x - projx;
+      const dy = p.y - projy;
+      return Math.sqrt(dx * dx + dy * dy);
+    }
+
+    function rdpSimplify(points, epsilon) {
+      if (points.length <= 2) return points.slice();
+      let dmax = 0;
+      let index = 0;
+      const start = points[0];
+      const end = points[points.length - 1];
+      for (let i = 1; i < points.length - 1; i++) {
+        const d = perpendicularDistance(points[i], start, end);
+        if (d > dmax) {
+          index = i;
+          dmax = d;
+        }
+      }
+      if (dmax > epsilon) {
+        const rec1 = rdpSimplify(points.slice(0, index + 1), epsilon);
+        const rec2 = rdpSimplify(points.slice(index), epsilon);
+        return rec1.slice(0, -1).concat(rec2);
+      } else {
+        return [start, end];
+      }
+    }
+
+    function capMouseSamples(points, maxPoints) {
+      if (points.length <= maxPoints) return points;
+      // Increase epsilon until we reduce to the desired cap
+      // Start from 1px and grow by factor
+      let epsilon = 1;
+      let simplified = rdpSimplify(points, epsilon);
+      while (simplified.length > maxPoints) {
+        epsilon *= 1.5;
+        simplified = rdpSimplify(points, epsilon);
+        if (epsilon > 1e5) break;
+      }
+      // As a final guard, truncate if still above max
+      if (simplified.length > maxPoints) {
+        simplified = simplified.slice(0, maxPoints);
+      }
+      return simplified;
+    }
+
+    // Insert an EASY attention-check question at a random position (server-provided)
+    (function injectEasyQuestion() {
+      try {
+        if (!easyQuestionFromServer) return;
+        const easyQuestion = Object.assign({}, easyQuestionFromServer, { is_easy: true });
+        const insertIndex = Math.floor(Math.random() * (questions.length + 1));
+        questions = questions.slice(0, insertIndex).concat([easyQuestion], questions.slice(insertIndex));
+      } catch (e) {
+        // If anything goes wrong, fall back to original questions without injection
+      }
+    })();
+
+    function onMouseMove(e) {
+      const t = nowMs();
+      if (t - lastMouseRecordMs < 50) return; // throttle to ~20Hz
+      lastMouseRecordMs = t;
+      mouseMoves.push({ t: round2((t - questionStartTimeMs) / 1000), x: e.clientX, y: e.clientY });
+    }
+
+    function onVisibilityChange() {
+      const t = nowMs();
+      if (document.hidden) {
+        if (tabHiddenStartMs === null) tabHiddenStartMs = t;
+      } else {
+        if (tabHiddenStartMs !== null) {
+          tabAwayMs += (t - tabHiddenStartMs);
+          tabHiddenStartMs = null;
+          switchedTabsThisQuestion = true;
+        }
+      }
+    }
+
+    function onBlur() {
+      const t = nowMs();
+      if (document.hidden) return; // handled by visibilitychange
+      if (tabHiddenStartMs === null) tabHiddenStartMs = t;
+    }
+
+    function onFocus() {
+      const t = nowMs();
+      if (document.hidden) return;
+      if (tabHiddenStartMs !== null) {
+        tabAwayMs += (t - tabHiddenStartMs);
+        tabHiddenStartMs = null;
+        switchedTabsThisQuestion = true;
+      }
+    }
+
+    function startTracking() {
+      mouseMoves = [];
+      lastMouseRecordMs = 0;
+      switchedTabsThisQuestion = false;
+      tabHiddenStartMs = null;
+      tabAwayMs = 0;
+      window.addEventListener('mousemove', onMouseMove);
+      document.addEventListener('visibilitychange', onVisibilityChange);
+      window.addEventListener('blur', onBlur);
+      window.addEventListener('focus', onFocus);
+    }
+
+    function stopTracking(finalNowMs) {
+      // finalize any ongoing away interval
+      if (tabHiddenStartMs !== null) {
+        tabAwayMs += (finalNowMs - tabHiddenStartMs);
+        tabHiddenStartMs = null;
+        switchedTabsThisQuestion = true;
+      }
+      window.removeEventListener('mousemove', onMouseMove);
+      document.removeEventListener('visibilitychange', onVisibilityChange);
+      window.removeEventListener('blur', onBlur);
+      window.removeEventListener('focus', onFocus);
+    }
+
+    function renderQuestion() {
+      const q = questions[currentIndex];
+      const body = document.getElementById('card-body');
+      let questionHtml = '';
+      if (questionDisplay === 'definition_prompt') {
+        questionHtml = `<div class="question">What is the definition of "<strong>${q.id}</strong>"?</div>`;
+      } else if (questionDisplay === 'word_only') {
+        questionHtml = `<div class="question"><strong>${q.id}</strong></div>`;
+      } else {
+        questionHtml = `<div class="question"><strong>${q.id}</strong></div>`;
+      }
+      body.innerHTML = `
+        ${questionHtml}
+        <ul class="options">
+          ${q.choices.map(opt => 
+            `<li><label><input type="radio" name="option" value="${opt}"> ${opt}</label></li>`
+          ).join('')}
+        </ul>
+        <button id="submit-btn" class="btn" disabled>Submit</button>
+        <div id="flash"></div>
+      `;
+      const radios = body.querySelectorAll('input[name="option"]');
+      const submitBtn = document.getElementById('submit-btn');
+      radios.forEach(r => r.addEventListener('change', () => submitBtn.disabled = false));
+      submitBtn.addEventListener('click', handleSubmit);
+      questionStartTimeMs = nowMs();
+      startTracking();
+    }
+    
+    function handleSubmit() {
+      const body = document.getElementById('card-body');
+      const selected = body.querySelector('input[name="option"]:checked').value;
+      const q = questions[currentIndex];
+      const isCorrect = (selected === q.target[0]);
+      const tNow = nowMs();
+      stopTracking(tNow);
+      const responseTimeSeconds = round2((tNow - questionStartTimeMs) / 1000);
+      // Save result for logging, including choices (distractors), mouse and tab behavior
+      questionResults.push({
+        id: q.id,
+        selected,
+        correct: q.target[0],
+        is_correct: isCorrect,
+        is_easy: q.is_easy === true,
+        choices: q.choices,
+        response_time_seconds: responseTimeSeconds,
+        mouse_movement: capMouseSamples(mouseMoves, MAX_MOUSE_SAMPLES),
+        tab_switch: {
+          switched: switchedTabsThisQuestion,
+          total_away_seconds: round2(tabAwayMs / 1000)
+        }
+      });
+      const flash = document.getElementById('flash');
+      if (isCorrect) {
+        score++;
+        flash.textContent = 'Correct!';
+        flash.style.background = '#e6f9ec'; flash.style.color = '#2d6a4f';
+      } else {
+        flash.textContent = `Wrong! Correct: ${q.target[0]}`;
+        flash.style.background = '#fdecea'; flash.style.color = '#7f1d1d';
+      }
+      flash.style.display = 'block';
+      document.getElementById('submit-btn').disabled = true;
+      setTimeout(() => {
+        currentIndex++;
+        if (currentIndex < questions.length) {
+          renderQuestion();
+        } else {
+          // Send results for this quiz part to server
+          fetch('/submit_quiz_part', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              quiz_id: quizId,
+              results: questionResults,
+              score: score
+            })
+          })
+          .then(res => res.json())
+          .then(data => {
+            if (data.next_quiz_url) {
+              // Show transition message then redirect
+              const card = document.getElementById('quiz-card');
+              card.innerHTML = `
+                <div id="score-screen">
+                  <h2>Quiz Complete!</h2>
+                  <p>Moving to the next quiz...</p>
+                </div>
+              `;
+              setTimeout(() => {
+                window.location.href = data.next_quiz_url;
+              }, 1500);
+            } else if (data.finish_url) {
+              window.location.href = data.finish_url;
+            }
+          });
+        }
+      }, 1500);
+    }
+    
+    function renderScore() {
+      const card = document.getElementById('quiz-card');
+      card.innerHTML = `
+        <div id="score-screen">
+          <h2>Your Score</h2>
+          <p>${score} / ${questions.length}</p>
+          <button class="btn" onclick="location.reload()">Retry Quiz</button>
+        </div>
+      `;
+    }
+    
+    renderQuestion();
+  </script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+services:
+  web:  # Our Flask website application
+    build:  # Build image from Dockerfile in ./web directory
+      context: ./web
+    hostname: web
+    container_name: web
+    ports: # Map host port 5000 to container port 5000
+      - "5000:5000"
+    volumes: # Mount code into container for live updates
+      - ./web:/app
+    networks: # Join a shared network so services can communicate
+      - my-network
+    depends_on:  # Ensure web starts after database and admin UI
+      - db
+      - mongo-express
+
+  db:  # MongoDB database service
+    image: mongo:latest
+    hostname: db
+    container_name: db
+    restart: unless-stopped
+    command: [ "--bind_ip_all" ] # Allow connections from any IP
+    expose: # Expose default Mongo port
+      - "27017:27017"
+    volumes: # Persist database files on the host
+      - ./data/db:/data/db
+    networks:
+      - my-network
+
+  mongo-express: # Mongo Express admin UI
+    image: mongo-express:latest
+    hostname: mongo-express
+    container_name: mongo-express
+    restart: unless-stopped
+    ports:  # Map host port 8081 to the admin UI port
+      - "8081:8081"
+    environment: # Tell mongo-express where to find the database
+      - ME_CONFIG_MONGODB_SERVER=db
+      - ME_CONFIG_MONGODB_URL=mongodb://db
+    networks:
+      - my-network
+
+networks: # Define a custom network for service communication
+  my-network:

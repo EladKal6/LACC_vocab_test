@@ -1,0 +1,202 @@
+{
+  "instructions": "In this test, you will be presented with a series of English words. For each word, your task is to select the correct definition from the list of options provided. Read each word carefully and choose the definition that best matches the word. Take your time and do your best. If everything is clear, you can now start the experiment.",
+  "question_display": "definition_prompt",
+  "questions": [
+    {
+      "id": "divide",
+      "type": "choice",
+      "feedback": true,
+      "choices": [
+        "A food made from ground meat often with other ingredients stuffed into a casing",
+        "A quantity of things arranged one on top of another",
+        "To stop working permanently",
+        "To separate into parts"
+      ],
+      "target": [
+        "To separate into parts"
+      ]
+    },
+    {
+      "id": "drugstore",
+      "type": "choice",
+      "feedback": true,
+      "choices": [
+        "Approximately",
+        "The stage of life between infancy and adolescence",
+        "A retail establishment that sells medicines toiletries and other household goods",
+        "A small handheld brush with bristles used for cleaning teeth"
+      ],
+      "target": [
+        "A retail establishment that sells medicines toiletries and other household goods"
+      ]
+    },
+    {
+      "id": "model",
+      "type": "choice",
+      "feedback": true,
+      "choices": [
+        "A piece of work to be done",
+        "Activities involving physical exertion and skill often competitive in nature",
+        "Except if",
+        "A representation of something often on a smaller scale"
+      ],
+      "target": [
+        "A representation of something often on a smaller scale"
+      ]
+    },
+    {
+      "id": "architecture",
+      "type": "choice",
+      "feedback": true,
+      "choices": [
+        "A place where buyers and sellers interact to exchange goods or services",
+        "The group of people who are intended to watch listen to or read something",
+        "The art or practice of designing and constructing buildings",
+        "An answer or response"
+      ],
+      "target": [
+        "The art or practice of designing and constructing buildings"
+      ]
+    },
+    {
+      "id": "provided",
+      "type": "choice",
+      "feedback": true,
+      "choices": [
+        "A mark gesture or word that conveys meaning",
+        "Providing assistance or support",
+        "The sale of goods to the public usually in small quantities",
+        "Given"
+      ],
+      "target": [
+        "Given"
+      ]
+    },
+    {
+      "id": "statue",
+      "type": "choice",
+      "feedback": true,
+      "choices": [
+        "Scarcely",
+        "To receive or take something offered",
+        "A short test of knowledge or ability",
+        "A three-dimensional work of art typically representing a person or animal"
+      ],
+      "target": [
+        "A three-dimensional work of art typically representing a person or animal"
+      ]
+    },
+    {
+      "id": "contrast",
+      "type": "choice",
+      "feedback": true,
+      "choices": [
+        "To make something available to the public",
+        "To say what will happen in the future",
+        "The difference between two things",
+        "In any place"
+      ],
+      "target": [
+        "The difference between two things"
+      ]
+    },
+    {
+      "id": "planet",
+      "type": "choice",
+      "feedback": true,
+      "choices": [
+        "To come into sight",
+        "In front of or further along than",
+        "A celestial body that orbits a star is massive enough to be rounded by its own gravity and has cleared the neighborhood around its orbit",
+        "A person who operates an aircraft"
+      ],
+      "target": [
+        "A celestial body that orbits a star is massive enough to be rounded by its own gravity and has cleared the neighborhood around its orbit"
+      ]
+    },
+    {
+      "id": "lose",
+      "type": "choice",
+      "feedback": true,
+      "choices": [
+        "Be deprived of or cease to have",
+        "A place or position",
+        "A circular ornamental headwear often made of precious metals and jewels worn by monarchs as a symbol of their power and authority",
+        "An act or omission that is punishable by law"
+      ],
+      "target": [
+        "Be deprived of or cease to have"
+      ]
+    },
+    {
+      "id": "quit",
+      "type": "choice",
+      "feedback": true,
+      "choices": [
+        "A sweet viscous substance produced by bees from the nectar of flowers",
+        "The extent of something from end to end",
+        "To stop doing something",
+        "A fleshy typically umbrella-shaped fruiting body of certain fungi"
+      ],
+      "target": [
+        "To stop doing something"
+      ]
+    },
+    {
+      "id": "please",
+      "type": "choice",
+      "feedback": true,
+      "choices": [
+        "Pain in the abdomen",
+        "Quietly and gently",
+        "The work assigned to students by their teachers",
+        "A polite word used to make a request more courteous"
+      ],
+      "target": [
+        "A polite word used to make a request more courteous"
+      ]
+    },
+    {
+      "id": "involved",
+      "type": "choice",
+      "feedback": true,
+      "choices": [
+        "A person or entity that purchases goods or services",
+        "To set free",
+        "Money received especially on a regular basis for work or through investments",
+        "Taking part in or connected with something"
+      ],
+      "target": [
+        "Taking part in or connected with something"
+      ]
+    },
+    {
+      "id": "flour",
+      "type": "choice",
+      "feedback": true,
+      "choices": [
+        "The fleshy part of the face below the eye and to the side of the nose and mouth",
+        "In a manner that is not good or satisfactory",
+        "A finely ground powder made from grains",
+        "Words expressing personal emotions or feelings"
+      ],
+      "target": [
+        "A finely ground powder made from grains"
+      ]
+    },
+    {
+      "id": "someday",
+      "type": "choice",
+      "feedback": true,
+      "choices": [
+        "To say a word or words aloud",
+        "Thin and graceful",
+        "A person who creates art using paint",
+        "At an unspecified time in the future"
+      ],
+      "target": [
+        "At an unspecified time in the future"
+      ]
+    }
+  ]
+}

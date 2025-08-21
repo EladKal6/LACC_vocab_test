@@ -1,0 +1,23 @@
+{
+	"MultipleChoice": {
+		"id": "cat",
+		"type": "choice",
+		"feedback": true,
+		"choices": ["A small domesticated animal", "A type of vehicle", "A musical instrument", "A weather event"],
+		"target": ["A small domesticated animal"]
+	},
+	"LexTale": {
+		"id": "table",
+		"type": "choice",
+		"feedback": true,
+		"choices": ["yes", "no"],
+		"target": ["yes"]
+	},
+	"InvertedMultipleChoice": {
+		"id": "a yellow fruit",
+		"type": "choice",
+		"feedback": true,
+		"choices": ["ocean", "banana", "pencil", "cloud"],
+		"target": ["banana"]
+	}
+} 
